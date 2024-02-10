@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StatusBar as RNStatusBar } from 'react-native';
-import styled from 'styled-components/native';
+import { Platform, StatusBar as RNStatusBar, StyleSheet, Text, View } from 'react-native';
 
 import Heading from '../components/Heading';
 
@@ -13,71 +12,70 @@ export default function HomeScreen() {
   }, [])
 
   return (
-    <Wrapper>
+    <View style={styles.wrapper}>
       <StatusBar style="light" backgroundColor="#1d1c21" />
-      <Header>
+      <View style={styles.header}>
         <Heading size="huge">Hello, Jose</Heading>
-      </Header>
-      <CardWrapper>
-        <CardLabel>Current value</CardLabel>
-        <CardPrimaryText>R$1.103,14</CardPrimaryText>
-        <CardRow>
-          <CardColumn>
-            <CardLabel>Income</CardLabel>
-            <CardSecondaryText>+R$4.555,12</CardSecondaryText>
-          </CardColumn>
-          <CardColumn>
-            <CardLabel>Expense</CardLabel>
-            <CardSecondaryText>-R$3.451,98</CardSecondaryText>
-          </CardColumn>
-        </CardRow>
-      </CardWrapper>
-    </Wrapper>
+      </View>
+      <View style={styles.cardWrapper}>
+        <Text style={styles.cardLabel}>Current value</Text>
+        <Text style={styles.cardPrimaryText}>R$1.103,14</Text>
+        <View style={styles.cardRow}>
+          <View style={styles.cardColumn}>
+            <Text style={styles.cardLabel}>Income</Text>
+            <Text style={styles.cardSecondaryText}>+R$4.555,12</Text>
+          </View>
+          <View style={styles.cardColumn}>
+            <Text style={styles.cardLabel}>Expense</Text>
+            <Text style={styles.cardSecondaryText}>-R$3.451,98</Text>
+          </View>
+        </View>
+      </View>
+    </View>
   )
 }
 
-const Wrapper = styled.View`
-  flex: 1;
-  padding-top: ${Platform.OS === 'android'
-    ? `${RNStatusBar.currentHeight}px`
-    : 0};
-  background-color: #1d1c21;
-`;
-
-const Header = styled.View`
-  padding: 16px 20px 8px;
-`;
-
-const CardWrapper = styled.View`
-  margin: 8px 20px 32px;
-  padding: 24px;
-  background-color: #cae7ea;
-  border-radius: 18px;
-`;
-
-const CardLabel = styled.Text`
-  font-size: 14px;
-  color: #606060;
-`;
-
-const CardPrimaryText = styled.Text`
-  margin-bottom: 8px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #000000;
-`;
-
-const CardRow = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const CardColumn = styled.View`
-  flex-direction: column;
-`;
-
-const CardSecondaryText = styled.Text`
-  font-size: 18px;
-  color: #000000;
-  margin-right: 16px;
-`;
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android'
+      ? RNStatusBar.currentHeight
+      : 0,
+    backgroundColor: '#1d1c21',
+  },
+  header: {
+    paddingTop: 16,
+    paddingHorizontal: 20,
+    paddingBottom: 8,
+  },
+  cardWrapper: {
+    marginTop: 8,
+    marginHorizontal: 20,
+    marginBottom: 32,
+    padding: 24,
+    backgroundColor: '#cae7ea',
+    borderRadius: 18,
+  },
+  cardLabel: {
+    fontSize: 14,
+    color: '#606060',
+  },
+  cardPrimaryText: {
+    marginBottom: 8,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#000000',
+  },
+  cardSecondaryText: {
+    fontSize: 18,
+    color: '#000000',
+    marginRight: 16,
+  },
+  cardRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  cardColumn: {
+    flexDirection: 'column',
+  }
+})
