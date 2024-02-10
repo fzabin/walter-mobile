@@ -19,15 +19,15 @@ export default function HomeScreen() {
       </View>
       <View style={styles.cardWrapper}>
         <Text style={styles.cardLabel}>Current value</Text>
-        <Text style={styles.cardPrimaryText}>R$1.103,14</Text>
+        <Text style={styles.cardPrimaryText}>R$ 1.103,14</Text>
         <View style={styles.cardRow}>
           <View style={styles.cardColumn}>
             <Text style={styles.cardLabel}>Income</Text>
-            <Text style={styles.cardSecondaryText}>+R$4.555,12</Text>
+            <Text style={styles.cardSecondaryText}>+R$ 4.555,12</Text>
           </View>
           <View style={styles.cardColumn}>
             <Text style={styles.cardLabel}>Expense</Text>
-            <Text style={styles.cardSecondaryText}>-R$3.451,98</Text>
+            <Text style={styles.cardSecondaryText}>-R$ 3.451,98</Text>
           </View>
         </View>
       </View>
